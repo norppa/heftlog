@@ -1,3 +1,6 @@
+DROP TABLE IF EXISTS users;
+DROP TABLE IF EXISTS data;
+
 CREATE TABLE users (
     id INTEGER PRIMARY KEY AUTOINCREMENT,
     username TEXT,
@@ -8,7 +11,7 @@ CREATE TABLE users (
 CREATE TABLE data (
     id INTEGER PRIMARY KEY AUTOINCREMENT,
     date TEXT,
-    weight REAL
+    weight REAL,
     owner INTEGER,
-    FOREIGN KEY owner REFERENCES users (id) ON DELETE CASCADE
-)
+    FOREIGN KEY (owner) REFERENCES users(id) ON DELETE CASCADE
+);

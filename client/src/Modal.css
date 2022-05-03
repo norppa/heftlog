@@ -1,0 +1,20 @@
+.Modal {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.ModalContent {
+    background-color: white;
+    border: 3px solid #9FC4C2;
+    padding: 0px 20px 20px 20px;
+    border-radius: 5px;
+    z-index: 2;
+}

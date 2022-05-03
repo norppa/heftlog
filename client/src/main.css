@@ -1,0 +1,26 @@
+@import url('https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Rubik+Moonrocks&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Lora&display=swap');
+
+html {
+    box-sizing: border-box;
+    background-color: white;
+    font-family: Lora;
+}
+
+input, .dateView, button {
+    font-family: Lora;
+}
+
+body {
+    background-color: #F5F5ED;
+    border-top: 3px solid #E64135;
+    margin: 0;
+    padding: 0;
+}
+
+*,
+*:before,
+*:after {
+    box-sizing: inherit;
+}
+

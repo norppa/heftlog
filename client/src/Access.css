@@ -1,0 +1,50 @@
+.Access {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    
+    max-width: 1000px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 20px;
+    padding-bottom: 20px;
+}
+
+.storageSelectionContainer {
+    display: flex;
+    flex-direction: row;
+}
+
+.storageSelection {
+    border: 1px solid black;
+    border-radius: 6px;
+    padding: 10px;
+    margin: 20px;
+    cursor: pointer;
+}
+
+.storageSelection.selected {
+    background-color: gray;
+}
+
+.Access p {
+    width: 500px;
+}
+
+.Access .separator {
+    width: 100vw;
+    height: 1em;
+    background-color: white;
+    margin: 20px;
+}
+
+.Access input {
+    width: 300px;
+    margin: 5px;
+}
+
+.Access a {
+    font-weight: bold;
+    cursor: pointer;
+}

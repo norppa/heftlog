@@ -14,7 +14,7 @@ const digest = 'sha512'
 router.use(express.json())
 
 router.post('/register', (req, res) => {
-    console.log('/register')
+    console.log('/register', req.body)
     const { username, password } = req.body
     if (!username) return res.status(400).send('MISSING_USERNAME')
     if (!password) return res.status(400).send('MISSING_PASSWORD')
@@ -35,6 +35,7 @@ router.post('/register', (req, res) => {
 })
 
 router.post('/login', (req, res) => {
+    console.log('/login', req.body)
     const { username, password } = req.body
     if (!username) return res.status(400).send('MISSING_USERNAME')
     if (!password) return res.status(400).send('MISSING_PASSWORD')

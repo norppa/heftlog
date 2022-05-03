@@ -1,0 +1,159 @@
+.HeftLog {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    max-width: 1000px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 20px;
+}
+
+header {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-top: 5px;
+}
+
+header .left,
+header .right {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.headerBtn {
+    background-color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+
+    cursor: pointer;
+    font-size: 20pt;
+    margin-left: 10px;
+}
+
+.headerBtn.selected,
+.headerBtn:hover {
+    color: #E64135;
+}
+
+#logo {
+    height: 50px;
+    margin: 10px;
+}
+
+h1 {
+    display: inline-block;
+    text-align: center;
+    font-family: 'Abril Fatface', cursive;
+    margin: 12px 0px 10px 0px;
+}
+
+.chart {
+    background-color: white;
+    margin-bottom: 50px;
+    border: 1px solid #323234;
+}
+
+.inputRow {
+    display: flex;
+    justify-content: flex-end;
+    font-size: 16pt;
+    margin: 20px 0px;
+}
+
+
+
+.react-calendar {
+    position: absolute;
+    z-index: 1;
+}
+
+.dateView {
+    display: flex;
+    align-items: center;
+    border: 1px solid #323234;
+    border-radius: 3px;
+    padding: 5px 10px;
+    background-color: white;
+    cursor: pointer;
+    margin-left: 5px;
+}
+
+input {
+    border: 1px solid #323234;
+    border-radius: 3px;
+    font-size: 16pt;
+    width: 100px;
+    padding: 5px 10px;
+}
+
+button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-left: 5px;
+    padding: 0px 15px;
+}
+
+.sendBtn {
+    font-size: 20pt;
+}
+
+table,
+th,
+td {
+    border: 1px solid;
+    border-collapse: collapse;
+}
+
+td {
+    padding: 3px;
+}
+
+.tableHeader {
+    background-color: #9FC4C2;
+}
+
+.panel {
+    position: relative;
+    border: 1px solid #323234;
+    padding: 30px;
+    border-radius: 5px;
+    margin-bottom: 25px;
+}
+
+.panel label {
+    position: absolute;
+    top:-16px;
+    left:30px;
+    padding: 0px 15px 0px 8px;
+    font-size: 18pt;
+    background-color: #F5F5ED;
+    font-variant: small-caps;
+}
+
+.panel.closed {
+    padding: 0px;
+    color: gray;
+    border-color: gray;
+}
+
+textarea {
+    width: 100%;
+    height: 8em;
+    margin-bottom: 15px;
+}
+
+.buttonRow {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.error {
+    color: #E64135;
+}
