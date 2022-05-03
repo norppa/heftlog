@@ -3,8 +3,7 @@ import react from '@vitejs/plugin-react'
 
 // https://vitejs.dev/config/
 export default defineConfig({
-  server: {
-    port: 8080,
-  },
-  plugins: [react()]
+	plugins: [react()],
+	server: { port: 8080 },
+	base: './', // needed for correct parsing of css and js files in index.html
 })

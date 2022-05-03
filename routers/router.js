@@ -1,6 +1,7 @@
 import express from 'express'
+import cors from 'cors'
 import Database from 'better-sqlite3'
-import userRouter from './routers/userRouter.js'
+import userRouter from './userRouter.js'
 import { authenticate } from '../auth/auth.js'
 
 const db = new Database('./db/heftlog.db')
@@ -8,8 +9,6 @@ const router = express.Router()
 
 router.use(cors())
 router.use(express.json())
-
-router.use('/', express.static('./client/dist'))
 
 router.use('/api/user', userRouter)
 
@@ -47,6 +46,8 @@ router.post('/api/import', authenticate, (req, res) => {
         res.status(500).send(e)
     }
 })
+
+router.use('/', express.static(process.env.HEFTLOG_DIST))
 
 const insert = (date, weight, userId) => db
     .prepare('INSERT INTO data (date, weight, owner) VALUES (?,?,?)')
