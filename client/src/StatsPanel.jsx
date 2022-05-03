@@ -3,7 +3,7 @@ import { Context } from './Store'
 
 const StatsPanel = () => {
     const [state, dispatch] = useContext(Context)
-    
+
     const [show, setShow] = useState(true)
 
     if (!show) return (
@@ -19,7 +19,7 @@ const StatsPanel = () => {
 
                 {state.data.reduce((acc, cur) => {
                     const month = cur.date.toLocaleString('default', { month: 'long' })
-                    const newValue = { date: cur.date.getDate() + '.' + cur.date.getMonth() + '.', weight: cur.weight }
+                    const newValue = { date: cur.date.getDate() + '.' + (cur.date.getMonth() + 1) + '.', weight: cur.weight }
                     const monthObj = acc[acc.length - 1]
                     if (monthObj?.month === month) {
                         monthObj.values = monthObj.values.concat(newValue)

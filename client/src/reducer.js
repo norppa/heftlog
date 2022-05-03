@@ -1,6 +1,3 @@
-import localstorage from "./localstorage"
-import * as api from './api'
-
 export default (state, action) => {
     switch (action.type) {
         case 'SET': {
