@@ -2,7 +2,6 @@
 import { useState, useContext } from 'react'
 
 import './Access.css'
-import localstorage from './localstorage'
 import { Context } from './Store'
 import { login, register } from './actions'
 

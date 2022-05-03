@@ -1,4 +1,4 @@
 node_modules
 .env
-auth/keys/*.pem
+keys
 db/*.db

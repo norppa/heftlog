@@ -110,7 +110,7 @@ const HeftLog = () => {
                     onCancel: () => dispatch({ type: 'SET_MODAL' }),
                     onConfirm: () => {
                         delEntry(existingEntry, state, dispatch)
-                        dispatch({ type: 'SET_MODAL'})
+                        dispatch({ type: 'SET_MODAL' })
                     }
                 }
             dispatch({ type: 'SET_MODAL', payload: modal })
@@ -169,7 +169,7 @@ const today = () => {
     return new Date(now.getFullYear(), now.getMonth(), now.getDate())
 }
 
-const formatDate = (date) => date.getDate() + '.' + date.getMonth() + '.' + date.getFullYear()
+const formatDate = (date) => date.getDate() + '.' + (date.getMonth() + 1) + '.' + date.getFullYear()
 
 const areEqual = (date1, date2) => {
     return date1.getFullYear() === date2.getFullYear()
