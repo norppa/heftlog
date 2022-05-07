@@ -9,20 +9,21 @@ const toPlotData = (data) => {
     const plotData = []
     let date = ordered[0].date
 
+    console.log('filling in the missing dates')
     // Fill in missing dates
     ordered.forEach(point => {
-        while (date <= point.date) {
-            if (point.date.getFullYear() > date.getFullYear()
-                || point.date.getMonth() > date.getMonth()
-                || point.date.getDate() > date.getDate()) {
-                plotData.push({ date })
-            } else {
+        const c = compare(date, point.date)
+        while (c < 1) {
+            if (c === 0) {
+                // this date contains actual user-submitted data
                 plotData.push({ ...point, label: point.date.getDate() + '.' + (point.date.getMonth() + 1) + '.' })
+            } else {
+                // this date has only calculated average
+                plotData.push({ date })
             }
-            date = new Date(date)
-            date.setDate(date.getDate() + 1)
         }
     })
+    console.log('plotData', plotData)
 
     const n = 5 // the number of steps counted in average
 
@@ -53,6 +54,17 @@ const toPlotData = (data) => {
 const lastNAverage = (arr, start, n) => {
     const average = arr.slice(start, start + n).reduce((acc, cur) => acc + cur, 0) / n
     return Math.round(average * 10) / 10
+}
+
+const compare = (date1, date2) => {
+    const str1 = date1.getFullYear() 
+    if (date1.getFullYear() < date2.getFullYear()) return -1
+    if (date1.getFullYear() > date2.getFullYear()) return 1
+    if (date1.getMonth() < date2.getMonth()) return -1
+    if (date1.getMonth() > date2.getMonth()) return 1
+    if (date1.getDate() < date2.getDate()) return -1
+    if (date1.getDate() > date2.getDate()) return 1
+    return 0
 }
 
 
