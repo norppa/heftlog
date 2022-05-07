@@ -9,8 +9,6 @@ const toPlotData = (data) => {
     const plotData = []
     let date = ordered[0].date
 
-    console.log('fill in missing dates')
-
     // Fill in missing dates
     ordered.forEach(point => {
         let c = compare(date, point.date)
@@ -28,8 +26,6 @@ const toPlotData = (data) => {
             c = compare(date, point.date)
         }
     })
-
-    console.log('filled', plotData)
 
     const n = 5 // the number of steps counted in average
 
@@ -63,7 +59,7 @@ const lastNAverage = (arr, start, n) => {
 }
 
 const compare = (date1, date2) => {
-    const str1 = date1.getFullYear() 
+    const str1 = date1.getFullYear()
     if (date1.getFullYear() < date2.getFullYear()) return -1
     if (date1.getFullYear() > date2.getFullYear()) return 1
     if (date1.getMonth() < date2.getMonth()) return -1
@@ -71,6 +67,20 @@ const compare = (date1, date2) => {
     if (date1.getDate() < date2.getDate()) return -1
     if (date1.getDate() > date2.getDate()) return 1
     return 0
+}
+
+const domain = (data) => {
+    console.log('domain', data)
+    const { min, max } = data.reduce((acc, cur) => {
+        if (cur.weight > acc.max) return { ...acc, max: cur.weight }
+        if (cur.weight < acc.min) return { ...acc, min: cur.weight }
+        return acc
+    }, { min: data[0].weight, max: data[0].weight })
+
+    const evenMin = Math.floor(min / 10) * 10
+    const evenMax = Math.ceil(max / 10) * 10
+
+    return [evenMin, evenMax]
 }
 
 
@@ -85,14 +95,18 @@ const ChartPanel = () => {
         </div>
     )
 
+    const [min, max] = domain(state.data)
+    const tickArray = Array.from(Array(11).keys()).map(x => min + (x * (max - min) / 10))
+    console.log('tickAr', tickArray)
+
     return (
         <div className='panel'>
             <label onClick={() => setShow(false)}>Chart</label>
 
-            <LineChart className='chart' data={toPlotData(state.data)} width={940} height={300}>
+            <LineChart className='chart' data={toPlotData(state.data)} width={940} height={350}>
                 <CartesianGrid strokeDasharray="3 3" />
                 <XAxis dataKey="label" />
-                <YAxis />
+                <YAxis domain={[min, max]} ticks={tickArray} />
                 <Tooltip />
                 <Line dataKey="weight"
                     connectNulls
