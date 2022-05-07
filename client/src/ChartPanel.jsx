@@ -9,21 +9,27 @@ const toPlotData = (data) => {
     const plotData = []
     let date = ordered[0].date
 
-    console.log('filling in the missing dates')
+    console.log('fill in missing dates')
+
     // Fill in missing dates
     ordered.forEach(point => {
-        const c = compare(date, point.date)
+        let c = compare(date, point.date)
         while (c < 1) {
             if (c === 0) {
                 // this date contains actual user-submitted data
                 plotData.push({ ...point, label: point.date.getDate() + '.' + (point.date.getMonth() + 1) + '.' })
             } else {
-                // this date has only calculated average
+                // this date has only calculated
                 plotData.push({ date })
             }
+
+            date = new Date(date)
+            date.setDate(date.getDate() + 1)
+            c = compare(date, point.date)
         }
     })
-    console.log('plotData', plotData)
+
+    console.log('filled', plotData)
 
     const n = 5 // the number of steps counted in average
 
