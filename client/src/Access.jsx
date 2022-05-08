@@ -40,7 +40,6 @@ const Access = () => {
         registerMode
             ? await register(username, password, dispatch)
             : await login(username, password, state.storage === 'local', dispatch)
-            console.log('login done')
     }
 
     return (

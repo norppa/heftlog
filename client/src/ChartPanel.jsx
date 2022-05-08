@@ -70,7 +70,7 @@ const compare = (date1, date2) => {
 }
 
 const domain = (data) => {
-    console.log('domain', data)
+	if (data.length === 0) return [0,0]
     const { min, max } = data.reduce((acc, cur) => {
         if (cur.weight > acc.max) return { ...acc, max: cur.weight }
         if (cur.weight < acc.min) return { ...acc, min: cur.weight }
@@ -85,7 +85,6 @@ const domain = (data) => {
 
 
 const ChartPanel = () => {
-
     const [state, dispatch] = useContext(Context)
     const [show, setShow] = useState(true)
 
@@ -97,7 +96,6 @@ const ChartPanel = () => {
 
     const [min, max] = domain(state.data)
     const tickArray = Array.from(Array(11).keys()).map(x => min + (x * (max - min) / 10))
-    console.log('tickAr', tickArray)
 
     return (
         <div className='panel'>
